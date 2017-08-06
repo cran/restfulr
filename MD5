@@ -1,13 +1,13 @@
-21b3593eb5e79eff72bfd2fd7d301613 *DESCRIPTION
-cd8bd5b6a327c471efaea352dcdb5d65 *NAMESPACE
+cf32a2d70a0e286a4ea862aad9578a0c *DESCRIPTION
+c3f3f72bc3f7a3fb30bd736e66720065 *NAMESPACE
 2155d32161de95a5f6052345fe3479de *R/CRUDProtocol-class.R
 fb10bcf8423a6800535c2332acb2ec4c *R/CacheInfo-class.R
 16131e3379c630cc6fbb7bd450c5946d *R/Credentials-class.R
-6dc37fa33b2137e982c529a0f9ea35ef *R/HTTP-class.R
+0af7dcd961afff7cd1d722215139883d *R/HTTP-class.R
 8217e42348252bdc3b5d62c65e20f7e6 *R/Media-class.R
 7dc8e6e9e335004a5cf7381f26d93b7c *R/MediaCache-class.R
 5861200ecec680fec9dd9b2fa168ca7e *R/RestContainer-class.R
-9f20a569c304036a88c7ae80851221ea *R/RestUri-class.R
+fd2dba913b3add9e4ba66b830e53661d *R/RestUri-class.R
 0fcd40919deee51e1c04eaffb6ef06f1 *R/test_restfulr_package.R
 d5dd93d1257549a6f361b4a50d5c73a8 *R/utils.R
 9e409d49b5ea5e4b53eb6e1ae620d90f *inst/unitTests/test_RestContainer.R
@@ -17,7 +17,7 @@ d5dd93d1257549a6f361b4a50d5c73a8 *R/utils.R
 157ca009e829d8f39e4b3663d01ae141 *man/Media-class.Rd
 23dba3adf5431636eeb3d71e200e40c6 *man/MediaCache-class.Rd
 b2287d97c7da3c26edc2146fe58b42c2 *man/RestContainer-class.Rd
-aba1b56040ad455db00a9b43d572b3be *man/RestUri-class.Rd
+b4f5f554748eaac3b9733696ee43c12e *man/RestUri-class.Rd
 4a71c2f1009d487f95fcaa1ced1c7af3 *src/init.c
 04f3c27c1d49256ee7812f593a04b1e1 *src/raggedListToDF.c
 7aea4fb9179fb3637c4df6e5a689c2b3 *tests/restfulr_unit_tests.R
