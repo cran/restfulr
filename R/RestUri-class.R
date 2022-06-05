@@ -279,7 +279,7 @@ setMethod("authenticate", "RestUri", function(x) {
           })
 
 ### - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-### Utilities
+### Caching
 ###
 
 setGeneric("purgeCache", function(x, ...) standardGeneric("purgeCache"))
@@ -288,6 +288,13 @@ setMethod("purgeCache", "RestUri", function(x) {
   purge(x@cache)
   x
 })
+
+setGeneric("download.file",
+           function(url, destfile, method, quiet = FALSE,
+                    mode = "w", cacheOK = TRUE, 
+                    extra = getOption("download.file.extra"))
+               standardGeneric("download.file"),
+           signature="url")
 
 embedCredentials <- function(x) {
     creds <- credentials(x)
@@ -299,6 +306,14 @@ embedCredentials <- function(x) {
     url <- sub("://", paste0("://", auth), x, fixed=TRUE)
     initialize(x, url, credentials=NULL)
 }
+
+setMethod("download.file", "RestUri",
+          function(url, destfile, method, quiet = FALSE,
+                   mode = "w", cacheOK = TRUE, 
+                   extra = getOption("download.file.extra")) {
+              url <- as.character(embedCredentials(url))
+              callGeneric()
+          })
 
 ### - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ### Show
