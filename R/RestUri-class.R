@@ -12,7 +12,8 @@ setClassUnion("CredentialsORNULL", c("Credentials", "NULL"))
 setClass("RestUri",
          representation(cache = "MediaCache",
                         protocol = "CRUDProtocol",
-                        credentials = "CredentialsORNULL"),
+                        credentials = "CredentialsORNULL",
+                        errorHandler = "function"),
          contains = "character")
 
 ### - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -26,6 +27,7 @@ globalRestClientCache <- local({
 
 RestUri <- function(base.uri, protocol = CRUDProtocol(base.uri, ...),
                     cache = globalRestClientCache(),
+                    errorHandler = defaultErrorHandler,
                     ...)
 {
   if (!isSingleString(base.uri))
@@ -35,7 +37,7 @@ RestUri <- function(base.uri, protocol = CRUDProtocol(base.uri, ...),
   base.uri <- sub("/$", "", base.uri)
   credentials <- findCredentials(base.uri)
   new("RestUri", base.uri, protocol = protocol, cache = cache,
-      credentials = credentials)
+      credentials = credentials, errorHandler = errorHandler)
 }
 
 ### - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -279,7 +281,7 @@ setMethod("authenticate", "RestUri", function(x) {
           })
 
 ### - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-### Caching
+### Utilities
 ###
 
 setGeneric("purgeCache", function(x, ...) standardGeneric("purgeCache"))
@@ -288,13 +290,6 @@ setMethod("purgeCache", "RestUri", function(x) {
   purge(x@cache)
   x
 })
-
-setGeneric("download.file",
-           function(url, destfile, method, quiet = FALSE,
-                    mode = "w", cacheOK = TRUE, 
-                    extra = getOption("download.file.extra"))
-               standardGeneric("download.file"),
-           signature="url")
 
 embedCredentials <- function(x) {
     creds <- credentials(x)
@@ -306,14 +301,6 @@ embedCredentials <- function(x) {
     url <- sub("://", paste0("://", auth), x, fixed=TRUE)
     initialize(x, url, credentials=NULL)
 }
-
-setMethod("download.file", "RestUri",
-          function(url, destfile, method, quiet = FALSE,
-                   mode = "w", cacheOK = TRUE, 
-                   extra = getOption("download.file.extra")) {
-              url <- as.character(embedCredentials(url))
-              callGeneric()
-          })
 
 ### - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ### Show

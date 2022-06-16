@@ -1,7 +1,7 @@
 Package: restfulr
 Type: Package
 Title: R Interface to RESTful Web Services
-Version: 0.0.14
+Version: 0.0.15
 Author: Michael Lawrence
 Maintainer: Michael Lawrence <michafla@gene.com>
 Description: Models a RESTful service as if it were a nested R list.
@@ -13,6 +13,6 @@ Collate: CRUDProtocol-class.R CacheInfo-class.R Credentials-class.R
         HTTP-class.R Media-class.R MediaCache-class.R RestUri-class.R
         RestContainer-class.R test_restfulr_package.R utils.R
 NeedsCompilation: yes
-Packaged: 2022-05-06 18:16:58 UTC; michafla
+Packaged: 2022-06-15 21:06:20 UTC; larman
 Repository: CRAN
-Date/Publication: 2022-06-05 16:40:09 UTC
+Date/Publication: 2022-06-16 09:30:02 UTC
